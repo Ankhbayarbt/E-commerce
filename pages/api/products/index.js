@@ -6,7 +6,7 @@ import {
 } from "@/backend/controller/productControllers";
 
 const router = createRouter();
-
+// sadasd
 dbConnect();
 
 router.get(getProducts);
