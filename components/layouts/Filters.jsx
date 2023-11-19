@@ -19,14 +19,14 @@ const Filters = () => {
   }
 
   return (
-    <aside className="md:w-1/3 lg:w-1/4 px-4">
+    <aside className="md:w-1/3 lg:w-1/4 px-4 bg-[#D9D9D9]">
       <a
-        className="md:hidden mb-5  w-full text-center px-4 py-2 inline-block text-lg text-gray-700 bg-white shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 hover:text-blue-600"
+        className="md:hidden mb-5  w-full text-center px-4 py-2 inline-block text-lg text-gray-700 bg-[#D9D9D9] shadow-sm border border-gray-200 rounded-md hover:bg-gray-100 hover:text-blue-600"
         href="#"
       >
         Filter by
       </a>
-      <div className="hidden md:block px-6 py-4 border border-gray-200 bg-white rounded shadow-sm">
+      <div className="hidden md:block px-6 py-4 border border-gray-200  rounded shadow-sm">
         <h3 className="font-semibold mb-2">Price ($)</h3>
         <div className="grid md:grid-cols-3 gap-x-2">
           <div className="mb-4">
@@ -55,7 +55,7 @@ const Filters = () => {
         </div>
       </div>
 
-      <div className="hidden md:block px-6 py-4 border border-gray-200 bg-white rounded shadow-sm">
+      <div className="hidden md:block px-6 py-4 border border-gray-200  rounded shadow-sm">
         <h3 className="font-semibold mb-2">Category</h3>
 
         <ul className="space-y-1">

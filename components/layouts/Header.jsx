@@ -8,8 +8,8 @@ import { Avatar, Dropdown, Navbar } from "flowbite-react";
 
 const Header = () => {
   return (
-    <header className="bg-white py-2 border-b">
-      <Navbar fluid rounded>
+    <header className="bg-[#D9D9D9] py-2 border-b">
+      <Navbar className="bg-[#D9D9D9]" fluid rounded>
         <Navbar.Brand href="https://flowbite-react.com">
           <img
             src="https://play-lh.googleusercontent.com/A22g2UL_Qfsc7Y_wCEB5dsC2ZMy6CahngFySoE36SWYDyMhUqfzOjX2iZ9u8JvzR4THu=w240-h480-rw"
@@ -39,8 +39,7 @@ const Header = () => {
               </span>
             </Dropdown.Header>
             <Dropdown.Item>Dashboard</Dropdown.Item>
-            <Dropdown.Item>Settings</Dropdown.Item>
-            <Dropdown.Item>Earnings</Dropdown.Item>
+
             <Dropdown.Divider />
             <Dropdown.Item>Sign out</Dropdown.Item>
           </Dropdown>
@@ -51,7 +50,7 @@ const Header = () => {
           <Link href="/shop">Дэлгүүр</Link>
           {/* <Navbar.Link>Дэлгүүр</Navbar.Link> */}
           <Link href="/contact">Холбоо барих</Link>
-          <Link href="/aboutus">Бидний тухай</Link>
+          <Link href="/about_us">Бидний тухай</Link>
         </Navbar.Collapse>
       </Navbar>
     </header>

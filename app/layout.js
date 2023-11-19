@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       {" "}
-      <body>
+      <body className="bg-[#D9D9D9]">
         {" "}
         <Header />
         <div className="mx-10">{children}</div>
