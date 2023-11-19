@@ -2,7 +2,7 @@
 "use client";
 import React from "react";
 import Filters from "../layouts/Filters";
-import ProductItem from "./productItem";
+import ProductItem from "./clothes_item";
 
 const ListProducts = ({ data }) => {
   return (

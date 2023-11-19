@@ -20,7 +20,6 @@ export default function RootLayout({ children }) {
       <body>
         {" "}
         <Header />
-        <BreadCumbs />
         <div className="mx-10">{children}</div>
       </body>
     </html>

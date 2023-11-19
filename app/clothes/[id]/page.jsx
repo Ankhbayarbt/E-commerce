@@ -1,5 +1,5 @@
 "use client";
-import ProductDetails from "@/components/products/ProductDetails";
+import ProductDetails from "@/components/products/product_details";
 import axios from "axios";
 import React from "react";
 
