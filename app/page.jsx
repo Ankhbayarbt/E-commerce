@@ -1,7 +1,16 @@
 import React from "react";
+import axios from "axios";
+import ListProducts from "@/components/products/ListProducts";
 
-const HomePage = () => {
-  return <h1 className="text-3xl font-bold underline">Hello</h1>;
+const getProducts = async () => {
+  const { data } = await axios.get(`${process.env.API_URL}/api/products`);
+  return data;
+};
+
+const HomePage = async () => {
+  const productData = await getProducts();
+
+  return <ListProducts data={productData} />;
 };
 
 export default HomePage;
