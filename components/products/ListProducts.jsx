@@ -1,5 +1,5 @@
 "use client";
-
+"use client";
 import React from "react";
 import Filters from "../layouts/Filters";
 import ProductItem from "./productItem";
@@ -7,7 +7,7 @@ import ProductItem from "./productItem";
 const ListProducts = ({ data }) => {
   return (
     <section className="py-12">
-      <div className="container max-w-screen-xl mx-auto px-4">
+      <div className="container max-w-screen-xl  px-4">
         <div className="flex flex-col md:flex-row -mx-4">
           <Filters />
 

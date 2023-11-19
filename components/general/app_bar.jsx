@@ -1,6 +1,5 @@
-"use client";
-
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
+import Link from "next/link";
 const MyAppBar = () => {
   return (
     <Navbar fluid rounded>
@@ -41,13 +40,11 @@ const MyAppBar = () => {
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>
-        <Navbar.Link href="#" active>
-          Home
-        </Navbar.Link>
-        <Navbar.Link href="#">About</Navbar.Link>
-        <Navbar.Link href="#">Services</Navbar.Link>
-        <Navbar.Link href="#">Pricing</Navbar.Link>
-        <Navbar.Link href="#">Contact</Navbar.Link>
+        <Link href="/">Нүүр</Link>
+        <Link href="/shop">Дэлгүүр</Link>
+        {/* <Navbar.Link>Дэлгүүр</Navbar.Link> */}
+        <Link href="/contact">Холбоо барих</Link>
+        <Link href="/aboutus">Бидний тухай</Link>
       </Navbar.Collapse>
     </Navbar>
   );

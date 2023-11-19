@@ -5,7 +5,7 @@ const nextConfig = {
     DB_URI: "mongodb+srv://Temuulen:Temuuka123@cluster0.ikgbq1w.mongodb.net/",
   },
   images: {
-    domains: ["res.cloudinary.com"],
+    domains: ["res.cloudinary.com", "https://images.unsplash.com"],
   },
 };
 
