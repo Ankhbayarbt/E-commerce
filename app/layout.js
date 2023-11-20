@@ -4,7 +4,7 @@ import Header from "@/components/layouts/Header";
 import "@material/web/button/filled-button.js";
 import "@material/web/button/outlined-button.js";
 import "@material/web/checkbox/checkbox.js";
-import BreadCumbs from "@/components/layouts/BreadCumbs";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,6 +20,7 @@ export default function RootLayout({ children }) {
       <body className="bg-[#D9D9D9]">
         {" "}
         <Header />
+        <Toaster position="bottom-right" />
         <div className="mx-10">{children}</div>
       </body>
     </html>
