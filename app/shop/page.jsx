@@ -1,5 +1,5 @@
 "use client";
-import ListProducts from "@/components/products/list_clothes";
+import ListProducts from "@/components/clothes/list_clothes";
 import axios from "axios";
 import { useEffect, useState } from "react";
 const ShopPage = () => {

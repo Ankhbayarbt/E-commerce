@@ -69,7 +69,7 @@ const getProductDetails = async (id) => {
   return data?.product;
 };
 
-const ProductDetailsPage = async ({ params }) => {
+const ProductDetailsPage = ({ params }) => {
   // const product = await getProductDetails(params.id);
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
