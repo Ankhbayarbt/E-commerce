@@ -1,7 +1,6 @@
-// components/ProductListTable.js
 import React from "react";
 
-const ProductListTable = ({ products }) => {
+const UserListTable = ({ users }) => {
   return (
     <div className="overflow-x-auto">
       <table className="min-w-full bg-white">
@@ -11,39 +10,27 @@ const ProductListTable = ({ products }) => {
               Нэр
             </th>
             <th style={{ border: "1px solid #999999" }} className="py-3 px-4">
-              Төрөл
+              Email
             </th>
             <th style={{ border: "1px solid #999999" }} className="py-3 px-4">
-              Үнэ
-            </th>
-            <th style={{ border: "1px solid #999999" }} className="py-3 px-4">
-              Мэдээлэл
-            </th>
-            <th style={{ border: "1px solid #999999" }} className="py-3 px-4">
-              Огноо
+              Нууц үг
             </th>
           </tr>
         </thead>
         <tbody>
-          {products.map((product) => (
+          {users.map((user) => (
             <tr
-              key={product.name}
+              key={user.name}
               className="transition duration-300 ease-in-out hover:bg-gray-100"
             >
               <td style={{ border: "1px solid #999999" }} className="py-2 px-4">
-                {product.name}
+                {user.name}
               </td>
               <td style={{ border: "1px solid #999999" }} className="py-2 px-4">
-                {product.category}
+                {user.email}
               </td>
               <td style={{ border: "1px solid #999999" }} className="py-2 px-4">
-                {product.price}
-              </td>
-              <td style={{ border: "1px solid #999999" }} className="py-2 px-4">
-                {product.description}
-              </td>
-              <td style={{ border: "1px solid #999999" }} className="py-2 px-4">
-                {product.created_date}
+                {user.password}
               </td>
             </tr>
           ))}
@@ -53,4 +40,4 @@ const ProductListTable = ({ products }) => {
   );
 };
 
-export default ProductListTable;
+export default UserListTable;
