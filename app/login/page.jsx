@@ -1,17 +1,16 @@
 "use client";
+import UserContext from "@/context/user_context";
+import axios from "axios";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { toast } from "react-hot-toast";
 
 const LoginPage = () => {
-  const dummyUsername = "user1";
-  const dummyPassword = "password1";
-
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
-
+  const ctx = useContext(UserContext);
   const loginButtonClick = async (e) => {
     e.preventDefault();
     if (username === dummyUsername && password === dummyPassword) {
@@ -58,9 +57,11 @@ const LoginPage = () => {
           </div>
 
           <button
-            type="submit"
+            type="button"
             className="my-2 px-4 py-2 text-center w-full inline-block text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700"
-            onClick={loginButtonClick}
+            onClick={() => {
+              ctx.login(password, username);
+            }}
           >
             Login
           </button>

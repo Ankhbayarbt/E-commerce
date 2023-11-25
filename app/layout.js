@@ -5,7 +5,8 @@ import "@material/web/button/filled-button.js";
 import "@material/web/button/outlined-button.js";
 import "@material/web/checkbox/checkbox.js";
 import { Toaster } from "react-hot-toast";
-
+import { ClothesWrapper } from "@/context/clothes_context";
+import { UserWrapper } from "@/context/user_context";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -21,7 +22,11 @@ export default function RootLayout({ children }) {
         {" "}
         <Header />
         <Toaster position="bottom-right" />
-        <div className="mx-10">{children}</div>
+        <div className="mx-10">
+          <UserWrapper>
+            <ClothesWrapper>{children}</ClothesWrapper>
+          </UserWrapper>
+        </div>
       </body>
     </html>
   );
