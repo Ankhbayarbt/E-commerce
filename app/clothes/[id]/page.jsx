@@ -1,7 +1,7 @@
 "use client";
 
 import axios from "axios";
-
+import { getCookie } from "cookies-next";
 import { useEffect, useState } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { RadioGroup } from "@headlessui/react";
@@ -73,14 +73,26 @@ const getProductDetails = async (id) => {
 
 const ProductDetailsPage = () => {
   const params = useParams();
-
+  const addBag = async () => {
+    const token = getCookie("token");
+    try {
+      const data = await axios.post(
+        "http://localhost:3001/api/basket",
+        {
+          clothes_id: params.id,
+        },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+    } catch (err) {
+      console.log(err);
+    }
+  };
   useEffect(() => {
     console.log(params.id);
     axios
       .get(`http://localhost:3001/api/clothes/${params.id}`)
       .then((res) => res.data.data)
       .then((data) => {
-        console.log(data);
         setClothes(data);
       })
       .catch((err) => {
@@ -151,7 +163,10 @@ const ProductDetailsPage = () => {
 
             <form className="mt-10">
               <button
-                type="submit"
+                onClick={() => {
+                  addBag();
+                }}
+                type="button"
                 className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
                 Add to bag

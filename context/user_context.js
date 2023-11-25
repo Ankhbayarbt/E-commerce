@@ -18,8 +18,10 @@ export function UserWrapper({ children }) {
         email: email,
         password: password,
       });
+      console.log(auth.data.user);
 
       setCookie("token", auth.data.token);
+      setCookie("userid", auth.data.user._id);
     } catch (err) {
       console.log(err);
     }

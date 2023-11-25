@@ -1,21 +1,27 @@
+"use client";
 import ClothesInBasket from "@/components/clothes/basket_clothes";
-
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { getCookie } from "cookies-next";
 const BasketPage = () => {
+  const [basketItems, setBasketItems] = useState([]);
+  useEffect(() => {
+    const token = getCookie("token");
+    axios
+      .get(`http://localhost:3001/api/basket/owner`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => {
+        console.log(res.data.data);
+        setBasketItems(res.data.data);
+      });
+  }, []);
   return (
     <div>
       <div>
-        <ClothesInBasket />
-        <ClothesInBasket />
-        <ClothesInBasket />
-        <ClothesInBasket />
-        <ClothesInBasket />
-        <ClothesInBasket />
-        <ClothesInBasket />
-        <ClothesInBasket />
-        <ClothesInBasket />
-        <ClothesInBasket />
-        <ClothesInBasket />
-        <ClothesInBasket />
+        {basketItems.map((el, i) => (
+          <ClothesInBasket clothes={el} key={i} />
+        ))}
       </div>
 
       <div className="flex justify-center my-6">

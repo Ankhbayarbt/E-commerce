@@ -1,20 +1,23 @@
-const ClothesInBasket = () => {
+const ClothesInBasket = ({ clothes }) => {
   return (
     <div className="flex bg-white w-full my-3">
       <div className="flex justify-between w-full">
         <div className="flex ">
-          <img
-            className="h-44 w-48"
-            src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-          />
+          <img className="h-44 w-48" src={clothes.clothes_id.image} />
           <div className="flex items-center flex-col justify-center">
-            <div className="text-3xl font-bold my-4 ml-5">Хар өнгийн цамц</div>
-            <div className="text-xl my-2 ml-5">id: 12dwadquh1238udni12dni</div>
+            <div className="text-3xl font-bold my-4 ml-5">
+              {clothes.clothes_id.name}
+            </div>
+            <div className="text-xl my-2 ml-5">
+              id: {clothes.clothes_id._id}
+            </div>
           </div>
         </div>
 
         <div className=" flex flex-col justify-around  items-center mr-5 ">
-          <div className="text-4xl font-bold text-green-400">120000</div>
+          <div className="text-4xl font-bold text-green-400">
+            {clothes.clothes_id.price}
+          </div>
           <div>
             <button
               type="button"
