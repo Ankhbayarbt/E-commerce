@@ -1,20 +1,19 @@
 "use client";
-import ClothesInBasket from "@/components/clothes/basket_clothes";
+import ItemInCart from "@/components/clothes/cart_clothes";
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { getCookie } from "cookies-next";
 import ClothesContext from "@/context/clothes_context";
 import UserContext from "@/context/user_context";
-const BasketPage = () => {
+const CartPage = () => {
   const [isLooggedIn, setLoggedIn] = useState(false);
   const clCtx = useContext(ClothesContext);
   const usCtx = useContext(UserContext);
   useEffect(() => {
-    clCtx.loadBasketItems();
+    clCtx.loadCartItems();
     usCtx
       .authorization()
       .then((res) => {
-        console.log(res);
         if (res) setLoggedIn(true);
         else {
           setLoggedIn(false);
@@ -28,8 +27,8 @@ const BasketPage = () => {
   return (
     <div>
       <div>
-        {clCtx.state.basketItems.map((el, i) => (
-          <ClothesInBasket clothes={el} key={i} />
+        {clCtx.state.cartItems.map((el, i) => (
+          <ItemInCart cartItem={el} key={i} />
         ))}
       </div>
 
@@ -41,6 +40,9 @@ const BasketPage = () => {
           Төлбөр төлөх
         </button>
         <button
+          onClick={() => {
+            clCtx.removeAllFromCart();
+          }}
           type="button"
           class="bg-red-500 inline-block rounded mx-4 bg-danger px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#dc4c64] transition duration-150 ease-in-out hover:bg-danger-600 hover:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:bg-danger-600 focus:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:outline-none focus:ring-0 active:bg-danger-700 active:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(220,76,100,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)]"
         >
@@ -51,4 +53,4 @@ const BasketPage = () => {
   );
 };
 
-export default BasketPage;
+export default CartPage;

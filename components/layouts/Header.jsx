@@ -21,7 +21,7 @@ const Header = () => {
           </span>
         </Navbar.Brand>
         <div className="flex md:order-2">
-          <Link href="/basket">
+          <Link href="/cart">
             <div className="flex justify-center items-center mr-4">
               <div
                 className="hidden-arrow mr-4 flex items-center text-neutral-600 transition duration-200 hover:text-neutral-700 hover:ease-in-out focus:text-neutral-700 disabled:text-black/30 motion-reduce:transition-none dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 [&.active]:text-black/90 dark:[&.active]:text-neutral-400"

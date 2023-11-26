@@ -8,6 +8,7 @@ import { RadioGroup } from "@headlessui/react";
 import { useRouter } from "next/router";
 import { useParams } from "next/navigation";
 import UserContext from "@/context/user_context";
+import ClothesContext from "@/context/clothes_context";
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -73,29 +74,17 @@ const getProductDetails = async (id) => {
 };
 
 const ProductDetailsPage = () => {
+  const [inCart, setInCart] = useState(false);
   const [isLooggedIn, setLoggedIn] = useState(false);
   const params = useParams();
   const usCtx = useContext(UserContext);
-  const addBag = async () => {
-    const token = getCookie("token");
-    try {
-      const data = await axios.post(
-        "http://localhost:3001/api/basket",
-        {
-          clothes_id: params.id,
-        },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const clCtx = useContext(ClothesContext);
   useEffect(() => {
+    const token = getCookie("token");
     console.log(params.id);
     usCtx
       .authorization()
       .then((res) => {
-        console.log(res);
         if (res) setLoggedIn(true);
         else {
           setLoggedIn(false);
@@ -114,6 +103,12 @@ const ProductDetailsPage = () => {
       .catch((err) => {
         console.log(err);
       });
+    axios
+      .get(`http://localhost:3001/api/cart/in_cart/${params.id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((res) => setInCart(res.data.inCart))
+      .catch((err) => console.log(err));
   }, []);
   const [clothes, setClothes] = useState({});
   // const product = await getProductDetails(params.id);
@@ -178,15 +173,22 @@ const ProductDetailsPage = () => {
             </div>
 
             <form className="mt-10">
-              <button
-                onClick={() => {
-                  addBag();
-                }}
-                type="button"
-                className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-              >
-                Add to bag
-              </button>
+              {!inCart ? (
+                <button
+                  onClick={() => {
+                    clCtx.addToCart(params.id, setInCart);
+                  }}
+                  type="button"
+                  className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                >
+                  Add to bag
+                </button>
+              ) : (
+                <div className="text-green-500 text-3xl">
+                  Уучлаарай энэ хувцас сагслагдсан байгаа учраас худалдан авах
+                  боломжгүй..
+                </div>
+              )}
             </form>
           </div>
 

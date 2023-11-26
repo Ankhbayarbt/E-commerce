@@ -88,7 +88,6 @@ const products = [
   // More products...
 ];
 const ListProducts = ({ data }) => {
-  console.log(data);
   return (
     <section className="py-12">
       <div className=" w-full px-4">
