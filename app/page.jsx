@@ -20,7 +20,6 @@ const HomePage = () => {
     usCtx
       .authorization()
       .then((res) => {
-        console.log(res);
         if (res) setLoggedIn(true);
         else {
           setLoggedIn(false);

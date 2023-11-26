@@ -5,7 +5,7 @@ import AddProductPage from "../../components/addClothes";
 import ProductListTable from "@/components/productListTable";
 import UserListTable from "@/components/UserListTable";
 import UserContext from "@/context/user_context";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const AdminClothesPage = () => {
   const [isLooggedIn, setLoggedIn] = useState(false);
