@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
 
 const AboutUsPage = () => {
+  const [isLooggedIn, setLoggedIn] = useState(false);
   return (
     <div className="bg-gray-100 min-h-screen">
       <div className="container mx-auto p-8">

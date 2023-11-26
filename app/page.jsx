@@ -8,21 +8,47 @@ import CustomCarousel from "@/components/carousel";
 import ActiveSlider from "@/components/new_clothes_slider";
 
 import ClothesContext from "@/context/clothes_context";
-
+import UserContext from "@/context/user_context";
+import { useRouter } from "next/navigation";
 const HomePage = () => {
-  const ctx = useContext(ClothesContext);
+  const clCtx = useContext(ClothesContext);
+  const usCtx = useContext(UserContext);
+  const [isLooggedIn, setLoggedIn] = useState(false);
+  const router = useRouter();
   useEffect(() => {
-    ctx.loadClothes();
+    clCtx.loadClothes();
+    usCtx
+      .authorization()
+      .then((res) => {
+        console.log(res);
+        if (res) setLoggedIn(true);
+        else {
+          setLoggedIn(false);
+          router.push("/login");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    console.log(usCtx.state);
   }, []);
   return (
     <div className="flex flex-col items-center w-full">
-      <div className="w-full my-6">
-        <CustomCarousel />
-      </div>
-      <div className="mb-6 text-5xl font-bold">Шинээр нэмэгдсэн хувцаснууд</div>
-      <div className="w-full">
-        <ActiveSlider />
-      </div>
+      {isLooggedIn ? (
+        <>
+          <div className="w-full my-6">
+            <CustomCarousel />
+          </div>
+          <div className="mb-6 text-5xl font-bold">
+            Шинээр нэмэгдсэн хувцаснууд
+          </div>
+          <div className="w-full">
+            <ActiveSlider />
+          </div>
+        </>
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 };

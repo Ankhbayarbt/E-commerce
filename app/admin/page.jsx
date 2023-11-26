@@ -1,11 +1,31 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AddProductPage from "../../components/addClothes";
 import ProductListTable from "@/components/productListTable";
 import UserListTable from "@/components/UserListTable";
+import UserContext from "@/context/user_context";
+import { useRouter } from "next/router";
 
 const AdminClothesPage = () => {
+  const [isLooggedIn, setLoggedIn] = useState(false);
+  const usCtx = useContext(UserContext);
+  const router = useRouter();
+  useEffect(() => {
+    usCtx
+      .authorization()
+      .then((res) => {
+        console.log(res);
+        if (res) setLoggedIn(true);
+        else {
+          setLoggedIn(false);
+          router.push("/login");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   // const [products, setProducts] = useState([]);
 
   const handleAddProduct = (newProduct) => {

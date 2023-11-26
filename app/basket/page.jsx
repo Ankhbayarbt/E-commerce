@@ -1,25 +1,34 @@
 "use client";
 import ClothesInBasket from "@/components/clothes/basket_clothes";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getCookie } from "cookies-next";
+import ClothesContext from "@/context/clothes_context";
+import UserContext from "@/context/user_context";
 const BasketPage = () => {
-  const [basketItems, setBasketItems] = useState([]);
+  const [isLooggedIn, setLoggedIn] = useState(false);
+  const clCtx = useContext(ClothesContext);
+  const usCtx = useContext(UserContext);
   useEffect(() => {
-    const token = getCookie("token");
-    axios
-      .get(`http://localhost:3001/api/basket/owner`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+    clCtx.loadBasketItems();
+    usCtx
+      .authorization()
       .then((res) => {
-        console.log(res.data.data);
-        setBasketItems(res.data.data);
+        console.log(res);
+        if (res) setLoggedIn(true);
+        else {
+          setLoggedIn(false);
+          router.push("/login");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }, []);
   return (
     <div>
       <div>
-        {basketItems.map((el, i) => (
+        {clCtx.state.basketItems.map((el, i) => (
           <ClothesInBasket clothes={el} key={i} />
         ))}
       </div>

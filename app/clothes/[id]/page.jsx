@@ -2,11 +2,12 @@
 
 import axios from "axios";
 import { getCookie } from "cookies-next";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { StarIcon } from "@heroicons/react/20/solid";
 import { RadioGroup } from "@headlessui/react";
 import { useRouter } from "next/router";
 import { useParams } from "next/navigation";
+import UserContext from "@/context/user_context";
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -72,7 +73,9 @@ const getProductDetails = async (id) => {
 };
 
 const ProductDetailsPage = () => {
+  const [isLooggedIn, setLoggedIn] = useState(false);
   const params = useParams();
+  const usCtx = useContext(UserContext);
   const addBag = async () => {
     const token = getCookie("token");
     try {
@@ -89,6 +92,19 @@ const ProductDetailsPage = () => {
   };
   useEffect(() => {
     console.log(params.id);
+    usCtx
+      .authorization()
+      .then((res) => {
+        console.log(res);
+        if (res) setLoggedIn(true);
+        else {
+          setLoggedIn(false);
+          router.push("/login");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
     axios
       .get(`http://localhost:3001/api/clothes/${params.id}`)
       .then((res) => res.data.data)

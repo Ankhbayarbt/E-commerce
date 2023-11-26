@@ -1,5 +1,29 @@
 "use client";
+
+import UserContext from "@/context/user_context";
+import { useRouter } from "next/navigation";
+import { useContext, useEffect, useState } from "react";
+
 const ContactUsPage = () => {
+  const [isLooggedIn, setLoggedIn] = useState(false);
+  const usCtx = useContext(UserContext);
+
+  const router = useRouter();
+  useEffect(() => {
+    usCtx
+      .authorization()
+      .then((res) => {
+        console.log(res);
+        if (res) setLoggedIn(true);
+        else {
+          setLoggedIn(false);
+          router.push("/login");
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
   return (
     <>
       <div className=" mx-auto w-full my-6">

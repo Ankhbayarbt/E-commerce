@@ -46,17 +46,21 @@ const AddClothes = ({ onAddProduct }) => {
     console.log(product);
     const token = getCookie("token");
     console.log(token);
-    await axios.post(
-      "http://localhost:3001/api/clothes",
-      {
-        name: product.name,
-        category: product.name,
-        price: product.price,
-        description: product.description,
-        image: product.image,
-      },
-      { headers: { Authorization: `Bearer ${token}` } }
-    );
+    try {
+      await axios.post(
+        "http://localhost:3001/api/clothes",
+        {
+          name: product.name,
+          category: product.name,
+          price: product.price,
+          description: product.description,
+          image: product.image,
+        },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <div className="w-full">
