@@ -1,6 +1,9 @@
+import UserContext from "@/context/user_context";
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import Link from "next/link";
+import { useContext } from "react";
 const MyAppBar = () => {
+  const usCtx = useContext(UserContext);
   return (
     <Navbar fluid rounded>
       <Navbar.Brand href="https://flowbite-react.com">
@@ -35,7 +38,13 @@ const MyAppBar = () => {
           <Dropdown.Item>Settings</Dropdown.Item>
           <Dropdown.Item>Earnings</Dropdown.Item>
           <Dropdown.Divider />
-          <Dropdown.Item>Sign out</Dropdown.Item>
+          <Dropdown.Item
+            onClick={() => {
+              usCtx.logOut();
+            }}
+          >
+            Sign out
+          </Dropdown.Item>
         </Dropdown>
         <Navbar.Toggle />
       </div>

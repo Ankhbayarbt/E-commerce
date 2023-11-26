@@ -1,6 +1,6 @@
 "use client";
 import axios from "axios";
-import { getCookie, setCookie } from "cookies-next";
+import { getCookie, setCookie, deleteCookie } from "cookies-next";
 import { set } from "mongoose";
 import { createContext, useContext, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -12,21 +12,34 @@ const initialState = {
 export function UserWrapper({ children }) {
   const [state, setState] = useState(initialState);
   const [clothes, setClothes] = useState("asdasd");
+  const [appBar, setAppBar] = useState(false);
   const router = useRouter();
   const authorization = async () => {
     const token = getCookie("token");
+    if (!token) return false;
     try {
       const data = await axios.get("http://localhost:3001/check", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setState({ ...state, isLogged: true });
       console.log(data);
+      setAppBar(true);
       return true;
     } catch (err) {
       console.log(err);
+      setAppBar(false);
 
       return false;
     }
+  };
+  const logOut = () => {
+    console.log("object");
+    setState({ ...state, myToken: "", isLogged: false });
+    setAppBar(false);
+    deleteCookie("token");
+    deleteCookie("user_id");
+
+    router.push("/login");
   };
   const login = async (password, email) => {
     try {
@@ -46,7 +59,9 @@ export function UserWrapper({ children }) {
     }
   };
   return (
-    <UserContext.Provider value={{ login, state, authorization }}>
+    <UserContext.Provider
+      value={{ login, logOut, state, authorization, appBar }}
+    >
       {children}
     </UserContext.Provider>
   );

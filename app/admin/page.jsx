@@ -61,19 +61,25 @@ const AdminClothesPage = () => {
   ];
 
   return (
-    <div className="flex flex-row my-8 justify-around">
-      <div className="w-1/3">
-        <AddProductPage onAddProduct={handleAddProduct} />
-      </div>
-      <div className="w-1/2 flex flex-col">
-        <div>
-          <ProductListTable products={products} />
+    <>
+      {isLooggedIn ? (
+        <div className="flex flex-row my-8 justify-around">
+          <div className="w-1/3">
+            <AddProductPage onAddProduct={handleAddProduct} />
+          </div>
+          <div className="w-1/2 flex flex-col">
+            <div>
+              <ProductListTable products={products} />
+            </div>
+            <div className="mt-12">
+              <UserListTable users={users} />
+            </div>
+          </div>
         </div>
-        <div className="mt-12">
-          <UserListTable users={users} />
-        </div>
-      </div>
-    </div>
+      ) : (
+        <></>
+      )}
+    </>
   );
 };
 

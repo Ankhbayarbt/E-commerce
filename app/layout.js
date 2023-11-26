@@ -20,13 +20,13 @@ export default function RootLayout({ children }) {
       {" "}
       <body className="bg-[#D9D9D9]">
         {" "}
-        <Header />
-        <Toaster position="bottom-right" />
-        <div className="mx-10">
-          <UserWrapper>
+        <UserWrapper>
+          <Header />
+          <Toaster position="bottom-right" />
+          <div className="mx-10">
             <ClothesWrapper>{children}</ClothesWrapper>
-          </UserWrapper>
-        </div>
+          </div>
+        </UserWrapper>
       </body>
     </html>
   );

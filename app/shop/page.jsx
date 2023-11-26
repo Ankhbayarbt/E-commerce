@@ -39,7 +39,7 @@ const ShopPage = () => {
   // useEffect(() => {
   //   getProducts();
   // }, []);
-  return <ListProducts data={ctx.state.clothes} />;
+  return <>{isLooggedIn ? <ListProducts data={ctx.state.clothes} /> : <></>}</>;
 };
 
 export default ShopPage;
