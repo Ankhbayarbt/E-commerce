@@ -27,7 +27,7 @@ const ProductListTable = ({ products }) => {
         <tbody>
           {products.map((product) => (
             <tr
-              key={product.name}
+              key={product._id}
               className="transition duration-300 ease-in-out hover:bg-gray-100"
             >
               <td style={{ border: "1px solid #999999" }} className="py-2 px-4">

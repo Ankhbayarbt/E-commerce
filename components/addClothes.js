@@ -3,6 +3,7 @@ import UserContext from "@/context/user_context";
 import axios from "axios";
 import React, { useContext, useState } from "react";
 import { getCookie } from "cookies-next";
+import toast from "react-hot-toast";
 const AddClothes = ({ onAddProduct }) => {
   const ctx = useContext(UserContext);
   const convertBase64 = (file) => {
@@ -51,15 +52,22 @@ const AddClothes = ({ onAddProduct }) => {
         "http://localhost:3001/api/clothes",
         {
           name: product.name,
-          category: product.name,
+          category: product.category,
           price: product.price,
           description: product.description,
           image: product.image,
         },
         { headers: { Authorization: `Bearer ${token}` } }
       );
+      toast.success("Бүтээгдэхүүнийг амжилттай бүртгэлээ.");
+      document.getElementById("productName").value = "";
+      document.getElementById("category").value = "Цамц";
+      document.getElementById("image").value = null;
+      document.getElementById("price").value = null;
+      document.getElementById("productDescription").value = "";
     } catch (err) {
       console.log(err);
+      toast.error("Бүртгэл амжилтгүй боллоо. Дахин оролдоно уу.");
     }
   };
   return (
@@ -75,7 +83,7 @@ const AddClothes = ({ onAddProduct }) => {
           </label>
           <input
             type="text"
-            id="productId"
+            id="productName"
             name="productId"
             className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:border-blue-500"
             placeholder="Бүтээгдэхүүний нэр"
@@ -91,6 +99,7 @@ const AddClothes = ({ onAddProduct }) => {
             Бүтээгдэхүүний төрөл
           </label>
           <select
+            id="category"
             onChange={(e) =>
               setProduct({ ...product, category: e.target.value })
             }
@@ -126,7 +135,7 @@ const AddClothes = ({ onAddProduct }) => {
             }}
             class="relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100 dark:focus:border-primary"
             type="file"
-            id="formFileMultiple"
+            id="image"
             multiple
           />
         </div>

@@ -12,7 +12,8 @@ const initialState = {
 };
 export function ClothesWrapper({ children }) {
   const [state, setState] = useState(initialState);
-  const [clothes, setClothes] = useState("asdasd");
+  const [clothes, setClothes] = useState("");
+  const [users, setUsers] = useState("");
   const loadCartItems = async () => {
     const token = getCookie("token");
     axios
@@ -91,11 +92,24 @@ export function ClothesWrapper({ children }) {
       console.log(err);
     }
   };
+  const loadUsers = async () => {
+    const token = getCookie("token");
+    try {
+      const users = await axios.get("http://localhost:3001/api/user", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      setState({ ...state, users: users.data.data });
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <ClothesContext.Provider
       value={{
         state,
         loadClothes,
+        loadUsers,
         loadCartItems,
         addToCart,
         removeFromCart,

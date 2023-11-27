@@ -13,24 +13,24 @@ const UserListTable = ({ users }) => {
               Email
             </th>
             <th style={{ border: "1px solid #999999" }} className="py-3 px-4">
-              Нууц үг
+              Огноо
             </th>
           </tr>
         </thead>
         <tbody>
           {users.map((user) => (
             <tr
-              key={user.name}
+              key={user._id}
               className="transition duration-300 ease-in-out hover:bg-gray-100"
             >
               <td style={{ border: "1px solid #999999" }} className="py-2 px-4">
-                {user.name}
+                {user.fname + " " + user.lname}
               </td>
               <td style={{ border: "1px solid #999999" }} className="py-2 px-4">
                 {user.email}
               </td>
               <td style={{ border: "1px solid #999999" }} className="py-2 px-4">
-                {user.password}
+                {user.createdAt}
               </td>
             </tr>
           ))}

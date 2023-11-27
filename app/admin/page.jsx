@@ -19,8 +19,8 @@ const AdminClothesPage = () => {
   const usCtx = useContext(UserContext);
   const router = useRouter();
   useEffect(() => {
-    console.log("object");
     ctx.loadClothes();
+    ctx.loadUsers();
     usCtx
       .authorization()
       .then((res) => {
@@ -35,7 +35,6 @@ const AdminClothesPage = () => {
       .catch((err) => {
         console.log(err);
       });
-
     console.log(ctx.state.clothes);
   }, []);
   // const getProducts = async () => {
@@ -55,7 +54,9 @@ const AdminClothesPage = () => {
             <div>
               <ProductListTable products={ctx.state.clothes} />
             </div>
-            <div className="mt-12">{/* <UserListTable users={users} /> */}</div>
+            <div className="mt-12">
+              <UserListTable users={ctx.state.users} />
+            </div>
           </div>
         </div>
       ) : (
