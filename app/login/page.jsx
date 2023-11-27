@@ -69,10 +69,11 @@ const LoginPage = () => {
           <hr className="mt-4" />
 
           <p className="text-center mt-5">
-            Don't have an account?{" "}
+            Бүртгүүлэх бол{" "}
             <Link href="/register" className="text-blue-500">
-              Register
-            </Link>
+              энд
+            </Link>{" "}
+            дарна уу.
           </p>
         </form>
       </div>

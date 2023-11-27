@@ -88,10 +88,11 @@ const RegisterPage = () => {
           <hr className="mt-4" />
 
           <p className="text-center mt-5">
-            Already have an account?{" "}
+            Бүртгэлтэй хэрэглэгч байгаа бол{" "}
             <Link href="/login" className="text-blue-500">
-              Log in
-            </Link>
+              энд
+            </Link>{" "}
+            дарна уу.
           </p>
         </form>
       </div>

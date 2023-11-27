@@ -39,8 +39,9 @@ const ProductListTable = ({ products }) => {
               <td style={{ border: "1px solid #999999" }} className="py-2 px-4">
                 {product.price}
               </td>
+
               <td style={{ border: "1px solid #999999" }} className="py-2 px-4">
-                {product.description}
+                <p class="line-clamp-2">{product.description}</p>
               </td>
               <td style={{ border: "1px solid #999999" }} className="py-2 px-4">
                 {product.created_date}

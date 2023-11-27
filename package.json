@@ -17,6 +17,7 @@
     "@material/web": "^1.0.1",
     "@mui/material": "^5.14.18",
     "@mui/styled-engine-sc": "^6.0.0-alpha.6",
+    "@tailwindcss/line-clamp": "^0.4.4",
     "axios": "^1.6.2",
     "body-parser": "^1.20.2",
     "cookies-next": "^4.1.0",

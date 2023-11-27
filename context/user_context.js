@@ -4,6 +4,8 @@ import { getCookie, setCookie, deleteCookie } from "cookies-next";
 import { set } from "mongoose";
 import { createContext, useContext, useState } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
+
 const UserContext = createContext();
 const initialState = {
   isLogged: false,
@@ -53,9 +55,11 @@ export function UserWrapper({ children }) {
 
       setCookie("token", auth.data.token);
       setCookie("userid", auth.data.user._id);
+      toast.success("Амжилттай нэвтэрлээ.");
       router.push("/");
     } catch (err) {
       console.log(err);
+      toast.error("Username эсвэл Password буруу байна. Дахин оролдоно уу.");
     }
   };
   return (
