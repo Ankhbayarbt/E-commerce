@@ -10,6 +10,7 @@ const ContactUsPage = () => {
 
   const router = useRouter();
   useEffect(() => {
+    console.log(usCtx.role);
     usCtx
       .authorization()
       .then((res) => {

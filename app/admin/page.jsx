@@ -19,22 +19,23 @@ const AdminClothesPage = () => {
   const usCtx = useContext(UserContext);
   const router = useRouter();
   useEffect(() => {
-    ctx.loadClothes();
-    ctx.loadUsers();
+    if (usCtx.role === "user") {
+      router.push("/");
+    }
+
     usCtx
       .authorization()
       .then((res) => {
         console.log(res);
-        if (res) setLoggedIn(true);
-        else {
+        if (res) {
+          setLoggedIn(true);
+        } else {
           setLoggedIn(false);
           console.log("false");
           router.push("/login");
         }
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => {});
     console.log(ctx.state.clothes);
   }, []);
   // const getProducts = async () => {
@@ -50,12 +51,12 @@ const AdminClothesPage = () => {
           <div className="w-1/3">
             <AddProductPage onAddProduct={handleAddProduct} />
           </div>
-          <div className="w-1/2 flex flex-col">
-            <div>
-              <ProductListTable products={ctx.state.clothes} />
+          <div className="w-1/2 flex flex-col ">
+            <div className="mt-12 h-80 overflow-y-scroll overflow-x-scroll flex">
+              <ProductListTable products={ctx.clothes} />
             </div>
-            <div className="mt-12">
-              <UserListTable users={ctx.state.users} />
+            <div className="mt-12 h-80 overflow-y-scroll overflow-x-scroll flex">
+              <UserListTable users={ctx.users} />
             </div>
           </div>
         </div>

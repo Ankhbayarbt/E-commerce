@@ -16,12 +16,21 @@ const HomePage = () => {
   const [isLooggedIn, setLoggedIn] = useState(false);
   const router = useRouter();
   useEffect(() => {
+    clCtx.loadUser;
     clCtx.loadClothes();
     usCtx
       .authorization()
       .then((res) => {
-        if (res) setLoggedIn(true);
-        else {
+        if (res) {
+          setLoggedIn(true);
+
+          if (res.user.role === "user") {
+            usCtx.setRole("user");
+            router.push("/");
+          } else {
+            usCtx.setRole("admin");
+          }
+        } else {
           setLoggedIn(false);
           router.push("/login");
         }

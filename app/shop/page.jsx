@@ -14,7 +14,7 @@ const ShopPage = () => {
   const router = useRouter();
   useEffect(() => {
     console.log("object");
-    ctx.loadClothes();
+
     usCtx
       .authorization()
       .then((res) => {
@@ -39,7 +39,7 @@ const ShopPage = () => {
   // useEffect(() => {
   //   getProducts();
   // }, []);
-  return <>{isLooggedIn ? <ListProducts data={ctx.state.clothes} /> : <></>}</>;
+  return <>{isLooggedIn ? <ListProducts data={ctx.clothes} /> : <></>}</>;
 };
 
 export default ShopPage;

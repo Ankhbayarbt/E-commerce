@@ -13,8 +13,9 @@ const initialState = {
 };
 export function UserWrapper({ children }) {
   const [state, setState] = useState(initialState);
-  const [clothes, setClothes] = useState("asdasd");
+  const [clothes, setClothes] = useState([]);
   const [appBar, setAppBar] = useState(false);
+  const [role, setRole] = useState("user");
   const router = useRouter();
   const authorization = async () => {
     const token = getCookie("token");
@@ -26,7 +27,7 @@ export function UserWrapper({ children }) {
       setState({ ...state, isLogged: true });
       console.log(data);
       setAppBar(true);
-      return true;
+      return { logged: true, user: data.data.user };
     } catch (err) {
       console.log(err);
       setAppBar(false);
@@ -39,9 +40,25 @@ export function UserWrapper({ children }) {
     setState({ ...state, myToken: "", isLogged: false });
     setAppBar(false);
     deleteCookie("token");
-    deleteCookie("user_id");
+    deleteCookie("userid");
 
     router.push("/login");
+  };
+  const signUp = async (fname, lname, email, password) => {
+    console.log("object");
+    try {
+      const data = await axios.post("http://localhost:3001/api/user/", {
+        fname,
+        lname,
+        email,
+        password,
+      });
+
+      setCookie("token", data.data.token);
+      setCookie("userid", data.data.user._id);
+    } catch (err) {
+      console.log(err);
+    }
   };
   const login = async (password, email) => {
     try {
@@ -64,7 +81,16 @@ export function UserWrapper({ children }) {
   };
   return (
     <UserContext.Provider
-      value={{ login, logOut, state, authorization, appBar }}
+      value={{
+        login,
+        logOut,
+        state,
+        authorization,
+        appBar,
+        setRole,
+        role,
+        signUp,
+      }}
     >
       {children}
     </UserContext.Provider>

@@ -108,6 +108,7 @@ const Header = () => {
               {/* <Navbar.Link>Дэлгүүр</Navbar.Link> */}
               <Link href="/contact">Холбоо барих</Link>
               <Link href="/about_us">Бидний тухай</Link>
+              {usCtx.role === "admin" && <Link href="/admin">Админ</Link>}
             </Navbar.Collapse>
           </Navbar>
         </header>

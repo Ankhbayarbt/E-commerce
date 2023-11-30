@@ -3,10 +3,10 @@ import React from "react";
 
 const ProductListTable = ({ products }) => {
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-scroll">
       <table className="min-w-full bg-white">
         <thead>
-          <tr className="bg-gray-200 text-gray-900">
+          <tr className="bg-gray-200 text-gray-900 ">
             <th style={{ border: "1px solid #999999" }} className="py-3 px-4">
               Нэр
             </th>

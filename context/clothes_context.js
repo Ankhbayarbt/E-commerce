@@ -12,8 +12,8 @@ const initialState = {
 };
 export function ClothesWrapper({ children }) {
   const [state, setState] = useState(initialState);
-  const [clothes, setClothes] = useState("");
-  const [users, setUsers] = useState("");
+  const [clothes, setClothes] = useState([]);
+  const [users, setUsers] = useState([]);
   const loadCartItems = async () => {
     const token = getCookie("token");
     axios
@@ -86,8 +86,7 @@ export function ClothesWrapper({ children }) {
       const clothes = await axios.get("http://localhost:3001/api/clothes", {
         headers: { Authorization: `Bearer ${token}` },
       });
-
-      setState({ ...state, clothes: clothes.data.data });
+      setClothes(clothes.data.data);
     } catch (err) {
       console.log(err);
     }
@@ -99,7 +98,7 @@ export function ClothesWrapper({ children }) {
         headers: { Authorization: `Bearer ${token}` },
       });
 
-      setState({ ...state, users: users.data.data });
+      setUsers(users.data.data);
     } catch (err) {
       console.log(err);
     }
@@ -107,6 +106,7 @@ export function ClothesWrapper({ children }) {
   return (
     <ClothesContext.Provider
       value={{
+        clothes,
         state,
         loadClothes,
         loadUsers,
@@ -114,6 +114,7 @@ export function ClothesWrapper({ children }) {
         addToCart,
         removeFromCart,
         removeAllFromCart,
+        users,
       }}
     >
       {children}

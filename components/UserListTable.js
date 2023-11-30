@@ -2,7 +2,7 @@ import React from "react";
 
 const UserListTable = ({ users }) => {
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-scrol ">
       <table className="min-w-full bg-white">
         <thead>
           <tr className="bg-gray-200 text-gray-900">
