@@ -6,25 +6,10 @@ import MyAppBar from "../general/app_bar";
 
 import { Avatar, Dropdown, Navbar } from "flowbite-react";
 import UserContext from "@/context/user_context";
+import ClothesContext from "@/context/clothes_context";
 
 const Header = () => {
-  const [isLooggedIn, setLoggedIn] = useState(false);
   const usCtx = useContext(UserContext);
-  // useEffect(() => {
-
-  //   usCtx
-  //     .authorization()
-  //     .then((res) => {
-  //       if (res) setLoggedIn(true);
-  //       else {
-  //         setLoggedIn(false);
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  //   console.log(usCtx.state);
-  // }, []);
   return (
     <>
       {usCtx.appBar ? (
@@ -40,7 +25,7 @@ const Header = () => {
                 EThrift
               </span>
             </Navbar.Brand>
-            <div className="flex md:order-2">
+            <div className="flex md:order-2 items-center">
               <Link href="/cart">
                 <div className="flex justify-center items-center mr-4">
                   <div
@@ -50,24 +35,21 @@ const Header = () => {
                     data-te-dropdown-toggle-ref
                     aria-expanded="false"
                   >
-                    {/* Dropdown trigger icon */}
                     <span className="[&>svg]:w-7">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
                         viewBox="0 0 24 24"
-                        fill="currentColor"
-                        className="h-10 w-10"
+                        strokeWidth={1.5}
+                        stroke="currentColor"
+                        className="w-6 h-6"
                       >
                         <path
-                          fillRule="evenodd"
-                          d="M5.25 9a6.75 6.75 0 0113.5 0v.75c0 2.123.8 4.057 2.118 5.52a.75.75 0 01-.297 1.206c-1.544.57-3.16.99-4.831 1.243a3.75 3.75 0 11-7.48 0 24.585 24.585 0 01-4.831-1.244.75.75 0 01-.298-1.205A8.217 8.217 0 005.25 9.75V9zm4.502 8.9a2.25 2.25 0 104.496 0 25.057 25.057 0 01-4.496 0z"
-                          clipRule="evenodd"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
                         />
                       </svg>
-                    </span>
-
-                    <span className="absolute -mt-4 ml-5 rounded-full bg-danger px-[0.35em] py-[0.15em] text-[0.9rem] font-bold leading-none text-red-600">
-                      1
                     </span>
                   </div>
                 </div>
@@ -78,18 +60,19 @@ const Header = () => {
                 label={
                   <Avatar
                     alt="User settings"
-                    img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                    img="https://images.nightcafe.studio//assets/profile.png?tr=w-1600,c-at_max"
                     rounded
                   />
                 }
               >
                 <Dropdown.Header>
-                  <span className="block text-sm">Bonnie Green</span>
+                  <span className="block text-sm">
+                    {usCtx.userDetail.fname}
+                  </span>
                   <span className="block truncate text-sm font-medium">
-                    name@flowbite.com
+                    {usCtx.userDetail.email}
                   </span>
                 </Dropdown.Header>
-                <Dropdown.Item>Dashboard</Dropdown.Item>
 
                 <Dropdown.Divider />
                 <Dropdown.Item
@@ -105,7 +88,6 @@ const Header = () => {
             <Navbar.Collapse>
               <Link href="/">Нүүр</Link>
               <Link href="/shop">Дэлгүүр</Link>
-              {/* <Navbar.Link>Дэлгүүр</Navbar.Link> */}
               <Link href="/contact">Холбоо барих</Link>
               <Link href="/about_us">Бидний тухай</Link>
               {usCtx.role === "admin" && <Link href="/admin">Админ</Link>}

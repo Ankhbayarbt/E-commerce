@@ -15,7 +15,7 @@ const AdminClothesPage = () => {
 
   const [products, setProducts] = useState([]);
   const [isLoggedIn, setLoggedIn] = useState(false);
-  const ctx = useContext(ClothesContext);
+  const clCtx = useContext(ClothesContext);
   const usCtx = useContext(UserContext);
   const router = useRouter();
   useEffect(() => {
@@ -36,13 +36,8 @@ const AdminClothesPage = () => {
         }
       })
       .catch((err) => {});
-    console.log(ctx.state.clothes);
+    console.log(clCtx.clothes);
   }, []);
-  // const getProducts = async () => {
-  //   const { data } = await axios.get(`${process.env.API_URL}/api/products`);
-  //   console.log(data);
-  //   setProducts(data);
-  // };
 
   return (
     <>
@@ -53,10 +48,10 @@ const AdminClothesPage = () => {
           </div>
           <div className="w-1/2 flex flex-col ">
             <div className="mt-12 h-80 overflow-y-scroll overflow-x-scroll flex">
-              <ProductListTable products={ctx.clothes} />
+              <ProductListTable />
             </div>
-            <div className="mt-12 h-80 overflow-y-scroll overflow-x-scroll flex">
-              <UserListTable users={ctx.users} />
+            <div className="mt-12 h-80 overflow-y-scroll  flex">
+              <UserListTable />
             </div>
           </div>
         </div>

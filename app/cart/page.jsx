@@ -31,7 +31,7 @@ const CartPage = () => {
       {isLooggedIn ? (
         <div>
           <div>
-            {clCtx.state.cartItems.map((el, i) => (
+            {clCtx.cartItems.map((el, i) => (
               <ItemInCart cartItem={el} key={i} />
             ))}
           </div>

@@ -126,7 +126,7 @@ const Filters = () => {
         <h3 className="font-semibold mb-2">Ratings</h3>
         <ul className="space-y-1">
           <li>
-            {[5, 4, 3, 2, 1].map((rating) => (
+            {[5, 4, 3, 2, 1]?.map?.((rating) => (
               <label key={rating} className="flex items-center">
                 <input
                   name="ratings"

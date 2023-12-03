@@ -67,11 +67,6 @@ const reviews = { href: "#", average: 4, totalCount: 117 };
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
-const getProductDetails = async (id) => {
-  const { data } = await axios.get(`${process.env.API_URL}/api/products/${id}`);
-
-  return data?.product;
-};
 
 const ProductDetailsPage = () => {
   const [inCart, setInCart] = useState(false);
@@ -95,7 +90,9 @@ const ProductDetailsPage = () => {
         console.log(err);
       });
     axios
-      .get(`http://localhost:3001/api/clothes/${params.id}`)
+      .get(`http://localhost:3001/api/clothes/${params.id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
       .then((res) => res.data.data)
       .then((data) => {
         setClothes(data);
@@ -111,9 +108,6 @@ const ProductDetailsPage = () => {
       .catch((err) => console.log(err));
   }, []);
   const [clothes, setClothes] = useState({});
-  // const product = await getProductDetails(params.id);
-  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-  const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
   return (
     <div className="bg-[#D9D9D9]">
       <div className="pt-6">

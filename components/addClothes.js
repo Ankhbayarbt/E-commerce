@@ -21,9 +21,12 @@ const AddClothes = ({ onAddProduct }) => {
 
   const uploadImage = async (event) => {
     const file = event.target.files[0];
-    const base64 = await convertBase64(file);
-
-    setProduct({ ...product, image: base64 });
+    try {
+      const base64 = await convertBase64(file);
+      setProduct({ ...product, image: base64 });
+    } catch (err) {
+      console.log(err);
+    }
   };
   const [product, setProduct] = useState({
     name: "",

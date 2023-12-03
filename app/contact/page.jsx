@@ -28,7 +28,7 @@ const ContactUsPage = () => {
   return (
     <>
       {isLooggedIn ? (
-        <div className=" mx-auto w-full my-6">
+        <div className=" mx-auto w-full my-6 mb-28">
           <div className="flex flex-col md:flex-row md:items-center   p-6">
             <div className="md:w-1/2 lg:w-2/5">
               <img

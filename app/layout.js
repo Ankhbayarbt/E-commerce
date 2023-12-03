@@ -7,6 +7,9 @@ import "@material/web/checkbox/checkbox.js";
 import { Toaster } from "react-hot-toast";
 import { ClothesWrapper } from "@/context/clothes_context";
 import { UserWrapper } from "@/context/user_context";
+
+import CustomFooter from "@/components/general/footer";
+import { Suspense } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -18,14 +21,16 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       {" "}
-      <body className="bg-[#D9D9D9]">
+      <body className="bg-[#D9D9D9] pb-10 ">
         {" "}
         <UserWrapper>
-          <Header />
-          <Toaster position="bottom-right" />
-          <div className="mx-10">
-            <ClothesWrapper>{children}</ClothesWrapper>
-          </div>
+          <ClothesWrapper>
+            <Header />
+            <Toaster position="bottom-right" />
+            <Suspense fallback={<p>Loading feed...</p>}>
+              <div className="mx-10">{children}</div>
+            </Suspense>
+          </ClothesWrapper>
         </UserWrapper>
       </body>
     </html>

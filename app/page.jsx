@@ -16,7 +16,9 @@ const HomePage = () => {
   const [isLooggedIn, setLoggedIn] = useState(false);
   const router = useRouter();
   useEffect(() => {
-    clCtx.loadUser;
+    // clCtx.loadUser();
+    usCtx.loadUsers();
+    clCtx.loadNewItems();
     clCtx.loadClothes();
     usCtx
       .authorization()
@@ -38,7 +40,6 @@ const HomePage = () => {
       .catch((err) => {
         console.log(err);
       });
-    console.log(usCtx.state);
   }, []);
   return (
     <div className="flex flex-col items-center w-full">

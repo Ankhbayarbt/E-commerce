@@ -3,17 +3,12 @@ import axios from "axios";
 import { createContext, useContext, useState } from "react";
 import { getCookie } from "cookies-next";
 const ClothesContext = createContext();
-const initialState = {
-  clothes: [],
-  users: [],
-  cartItems: [],
-  loading: false,
-  error: null,
-};
+
 export function ClothesWrapper({ children }) {
-  const [state, setState] = useState(initialState);
   const [clothes, setClothes] = useState([]);
-  const [users, setUsers] = useState([]);
+
+  const [cartItems, setCartItems] = useState([]);
+  const [newClothes, setNewClothes] = useState([]);
   const loadCartItems = async () => {
     const token = getCookie("token");
     axios
@@ -21,7 +16,7 @@ export function ClothesWrapper({ children }) {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
-        setState({ ...state, cartItems: res.data.data });
+        setCartItems(res.data.data);
       })
       .catch((err) => {
         console.log(err);
@@ -91,30 +86,35 @@ export function ClothesWrapper({ children }) {
       console.log(err);
     }
   };
-  const loadUsers = async () => {
+  const loadNewItems = async () => {
     const token = getCookie("token");
     try {
-      const users = await axios.get("http://localhost:3001/api/user", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-
-      setUsers(users.data.data);
+      const clothes = await axios.get(
+        "http://localhost:3001/api/clothes/new_clothes",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      console.log(clothes.data.data);
+      setNewClothes(clothes.data.data);
     } catch (err) {
       console.log(err);
     }
   };
+
   return (
     <ClothesContext.Provider
       value={{
         clothes,
-        state,
         loadClothes,
-        loadUsers,
+
         loadCartItems,
+        cartItems,
         addToCart,
         removeFromCart,
         removeAllFromCart,
-        users,
+        newClothes,
+        loadNewItems,
       }}
     >
       {children}

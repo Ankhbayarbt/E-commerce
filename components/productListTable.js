@@ -1,12 +1,18 @@
 // components/ProductListTable.js
-import React from "react";
+import ClothesContext from "@/context/clothes_context";
+import moment from "moment";
+import React, { useContext } from "react";
 
-const ProductListTable = ({ products }) => {
+const ProductListTable = () => {
+  const clCtx = useContext(ClothesContext);
   return (
     <div className="overflow-x-scroll">
       <table className="min-w-full bg-white">
         <thead>
           <tr className="bg-gray-200 text-gray-900 ">
+            <th style={{ border: "1px solid #999999" }} className="py-3 px-4">
+              ID
+            </th>
             <th style={{ border: "1px solid #999999" }} className="py-3 px-4">
               Нэр
             </th>
@@ -25,26 +31,30 @@ const ProductListTable = ({ products }) => {
           </tr>
         </thead>
         <tbody>
-          {products.map((product) => (
+          {clCtx.clothes?.map?.((clothes, i) => (
             <tr
-              key={product._id}
+              key={i}
               className="transition duration-300 ease-in-out hover:bg-gray-100"
             >
               <td style={{ border: "1px solid #999999" }} className="py-2 px-4">
-                {product.name}
-              </td>
-              <td style={{ border: "1px solid #999999" }} className="py-2 px-4">
-                {product.category}
-              </td>
-              <td style={{ border: "1px solid #999999" }} className="py-2 px-4">
-                {product.price}
+                {clothes._id}
               </td>
 
               <td style={{ border: "1px solid #999999" }} className="py-2 px-4">
-                <p class="line-clamp-2">{product.description}</p>
+                {clothes.name}
               </td>
               <td style={{ border: "1px solid #999999" }} className="py-2 px-4">
-                {product.created_date}
+                {clothes.category}
+              </td>
+              <td style={{ border: "1px solid #999999" }} className="py-2 px-4">
+                {clothes.price}
+              </td>
+
+              <td style={{ border: "1px solid #999999" }} className="py-2 px-4">
+                <p class="line-clamp-2">{clothes.description}</p>
+              </td>
+              <td style={{ border: "1px solid #999999" }} className="py-2 px-4">
+                {moment(clothes.created_date).calendar()}
               </td>
             </tr>
           ))}

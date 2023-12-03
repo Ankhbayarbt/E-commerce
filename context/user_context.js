@@ -13,9 +13,11 @@ const initialState = {
 };
 export function UserWrapper({ children }) {
   const [state, setState] = useState(initialState);
-  const [clothes, setClothes] = useState([]);
+
   const [appBar, setAppBar] = useState(false);
   const [role, setRole] = useState("user");
+  const [users, setUsers] = useState([]);
+  const [userDetail, setUserDetail] = useState({});
   const router = useRouter();
   const authorization = async () => {
     const token = getCookie("token");
@@ -24,7 +26,7 @@ export function UserWrapper({ children }) {
       const data = await axios.get("http://localhost:3001/check", {
         headers: { Authorization: `Bearer ${token}` },
       });
-      setState({ ...state, isLogged: true });
+      setUserDetail(data.data.user);
       console.log(data);
       setAppBar(true);
       return { logged: true, user: data.data.user };
@@ -33,6 +35,18 @@ export function UserWrapper({ children }) {
       setAppBar(false);
 
       return false;
+    }
+  };
+  const loadUsers = async () => {
+    const token = getCookie("token");
+    try {
+      const users = await axios.get("http://localhost:3001/api/user", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      setUsers(users.data.data);
+    } catch (err) {
+      console.log(err);
     }
   };
   const logOut = () => {
@@ -89,7 +103,10 @@ export function UserWrapper({ children }) {
         appBar,
         setRole,
         role,
+        loadUsers,
+        users,
         signUp,
+        userDetail,
       }}
     >
       {children}
