@@ -1,9 +1,8 @@
 import UserContext from "@/context/user_context";
 import moment from "moment/moment";
 import React, { useContext } from "react";
-
+//admin page-дээр байгаа user-ийг хянах table-ийн component.
 const UserListTable = ({ users }) => {
-  console.log(users);
   const usCtx = useContext(UserContext);
   return (
     <div className="">

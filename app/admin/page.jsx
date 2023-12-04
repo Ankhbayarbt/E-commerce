@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useContext, useEffect, useState } from "react";
-import AddProductPage from "../../components/addClothes";
-import ProductListTable from "@/components/productListTable";
-import UserListTable from "@/components/UserListTable";
+import AddProductPage from "../../components/insert_clothes";
+import ProductListTable from "@/components/clothes_list_table";
+import UserListTable from "@/components/user_list_table";
 import UserContext from "@/context/user_context";
 import { useRouter } from "next/navigation";
 import ClothesContext from "@/context/clothes_context";

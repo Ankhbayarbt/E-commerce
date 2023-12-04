@@ -13,12 +13,12 @@ const initialState = {
 };
 export function UserWrapper({ children }) {
   const [state, setState] = useState(initialState);
-
   const [appBar, setAppBar] = useState(false);
   const [role, setRole] = useState("user");
   const [users, setUsers] = useState([]);
   const [userDetail, setUserDetail] = useState({});
   const router = useRouter();
+  //хэрэглэгч яг тухайн мөчид системийн feature-уудийг үзэх эрхтэй эсэхийг шалгах. нэг ёсондоо login хийсэн эсэхийг шалгах function
   const authorization = async () => {
     const token = getCookie("token");
     if (!token) return false;
@@ -37,6 +37,7 @@ export function UserWrapper({ children }) {
       return false;
     }
   };
+  //хэрэглэгчдийг db-ээс авах function
   const loadUsers = async () => {
     const token = getCookie("token");
     try {
@@ -49,6 +50,7 @@ export function UserWrapper({ children }) {
       console.log(err);
     }
   };
+  //logout хийх function
   const logOut = () => {
     console.log("object");
     setState({ ...state, myToken: "", isLogged: false });
@@ -58,6 +60,7 @@ export function UserWrapper({ children }) {
 
     router.push("/login");
   };
+  //хэрэглэгчийн бүртгэл үүсгэх function
   const signUp = async (fname, lname, email, password) => {
     console.log("object");
     try {
@@ -74,6 +77,7 @@ export function UserWrapper({ children }) {
       console.log(err);
     }
   };
+  //хэрэглэгчийн бүртгэлээр нэвтрэх function
   const login = async (password, email) => {
     try {
       const auth = await axios.post("http://localhost:3001/api/user/login", {

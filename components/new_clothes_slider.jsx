@@ -1,17 +1,16 @@
 "use client";
-import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/free-mode";
-
+import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination } from "swiper/modules";
-
 import { RxArrowTopRight } from "react-icons/rx";
 import { ServiceData } from "./constants";
 import { useContext } from "react";
 import ClothesContext from "@/context/clothes_context";
 import Link from "next/link";
+//home page-ийн шинээр нэмэгдсэн хувцсыг харуулдаг slider-ийн component.
 const ActiveSlider = () => {
   const clCtx = useContext(ClothesContext);
   return (

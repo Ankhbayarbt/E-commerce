@@ -6,7 +6,6 @@ import Image from "next/image";
 import { Carousel } from "flowbite-react";
 import CustomCarousel from "@/components/carousel";
 import ActiveSlider from "@/components/new_clothes_slider";
-
 import ClothesContext from "@/context/clothes_context";
 import UserContext from "@/context/user_context";
 import { useRouter } from "next/navigation";
@@ -15,11 +14,13 @@ const HomePage = () => {
   const usCtx = useContext(UserContext);
   const [isLooggedIn, setLoggedIn] = useState(false);
   const router = useRouter();
+
   useEffect(() => {
-    // clCtx.loadUser();
+    //хуудас зурагдах үед uer, new item, clothes-ийн мэдээллүүдийг татан context-д хадгална.
     usCtx.loadUsers();
     clCtx.loadNewItems();
     clCtx.loadClothes();
+    //хуудас ачааллах үед хэрэглэгч нэвтэрсэн эсэхийг шалгана.
     usCtx
       .authorization()
       .then((res) => {
