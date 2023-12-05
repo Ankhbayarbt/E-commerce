@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import UserContext from "@/context/user_context";
-
+//Sign up хуудас.
 const RegisterPage = () => {
   const [fName, setFName] = useState("");
   const [lName, setLName] = useState("");

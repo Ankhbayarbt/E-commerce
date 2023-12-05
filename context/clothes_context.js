@@ -39,6 +39,7 @@ export function ClothesWrapper({ children }) {
         console.log(err);
       });
   };
+  //нэг барааг сагснаас хасах function.
   const removeFromCart = async (id) => {
     const token = getCookie("token");
     console.log(id);
@@ -111,7 +112,6 @@ export function ClothesWrapper({ children }) {
       value={{
         clothes,
         loadClothes,
-
         loadCartItems,
         cartItems,
         addToCart,

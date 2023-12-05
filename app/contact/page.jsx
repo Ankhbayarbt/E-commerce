@@ -3,7 +3,7 @@
 import UserContext from "@/context/user_context";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
-
+//Contact хуудас.
 const ContactUsPage = () => {
   const [isLooggedIn, setLoggedIn] = useState(false);
   const usCtx = useContext(UserContext);

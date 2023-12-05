@@ -4,7 +4,7 @@ import Link from "next/link";
 import StarRatings from "react-star-ratings";
 import Image from "next/image";
 
-const ProductItem = ({ Product }) => {
+const ClothesItem = ({ Product }) => {
   return (
     <article className="border border-gray-200 overflow-hidden bg-white shadow-sm rounded mb-5">
       <div className="flex flex-col md:flex-row">
@@ -77,4 +77,4 @@ const ProductItem = ({ Product }) => {
   );
 };
 
-export default ProductItem;
+export default ClothesItem;

@@ -6,6 +6,7 @@ import { getCookie } from "cookies-next";
 import ClothesContext from "@/context/clothes_context";
 import UserContext from "@/context/user_context";
 import { useRouter } from "next/navigation";
+//сагс component. Энд хэрэглэгчийн худалдан авахаар төлөвлөсөн буюу захиалсан хувцсыг харуулах ба нэг болон бүх хувцсыг сагснаас хасах, бүгдийг нь худалдан авах гэсэн үйлдлүүдийг хийж болно.
 const CartPage = () => {
   const [isLooggedIn, setLoggedIn] = useState(false);
   const clCtx = useContext(ClothesContext);

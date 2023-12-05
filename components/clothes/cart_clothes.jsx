@@ -1,6 +1,6 @@
 import ClothesContext from "@/context/clothes_context";
 import { useContext } from "react";
-
+//сагсанд байгаа нэг хувцасны мэдээллийг харуулах component.
 const ItemInCart = ({ cartItem }) => {
   const clCtx = useContext(ClothesContext);
   return (

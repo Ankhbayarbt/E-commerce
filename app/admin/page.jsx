@@ -7,7 +7,7 @@ import UserListTable from "@/components/user_list_table";
 import UserContext from "@/context/user_context";
 import { useRouter } from "next/navigation";
 import ClothesContext from "@/context/clothes_context";
-
+//admin хуудсанд хувцас болон user-үүдийн бүх мэдээллийг хянана мөн шинээр хувцас бүртгэх боломжтой.
 const AdminClothesPage = () => {
   const handleAddProduct = (newProduct) => {
     setProducts([...products, newProduct]);

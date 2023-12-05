@@ -6,7 +6,7 @@ import UserContext from "@/context/user_context";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
-//дэлгүүр page
+//дэлгүүр хуудас.
 const ShopPage = () => {
   const [products, setProducts] = useState([]);
   const [isLooggedIn, setLoggedIn] = useState(false);

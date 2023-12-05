@@ -4,7 +4,7 @@ import UserContext from "@/context/user_context";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
-
+//бүдний тухай хуудас.
 const AboutUsPage = () => {
   const [isLooggedIn, setLoggedIn] = useState(false);
 
