@@ -1,5 +1,5 @@
 "use client";
-import ListProducts from "@/components/clothes/list_clothes";
+import ListClothes from "@/components/clothes/list_clothes";
 import ClothesContext from "@/context/clothes_context";
 import AppContext from "@/context/clothes_context";
 import UserContext from "@/context/user_context";
@@ -32,7 +32,7 @@ const ShopPage = () => {
       });
   }, []);
 
-  return <>{isLooggedIn ? <ListProducts data={clCtx.clothes} /> : <></>}</>;
+  return <>{isLooggedIn ? <ListClothes data={clCtx.clothes} /> : <></>}</>;
 };
 
 export default ShopPage;

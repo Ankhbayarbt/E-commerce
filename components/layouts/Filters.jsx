@@ -2,7 +2,7 @@
 
 import React from "react";
 import StarRatings from "react-star-ratings";
-
+//дэлгүүр хуудасны хувцсыг шүүн харуулах үйлдлийг хийх component.
 const Filters = () => {
   let queryParams;
 

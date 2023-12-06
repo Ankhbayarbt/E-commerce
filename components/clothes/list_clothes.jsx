@@ -3,12 +3,14 @@ import React from "react";
 import Filters from "../layouts/Filters";
 import ClothesItem from "./clothes_item";
 import Link from "next/link";
+//хувцасны мэдээллийг харуулах жагсаалтын component.
 
-const ListProducts = ({ data }) => {
+const ListClothes = ({ data }) => {
   return (
     <section className="py-12">
       <div className=" w-full px-4">
         <div className="flex flex-col md:flex-row -mx-4">
+          {/* filter хийх хэсгийн Component. */}
           <Filters />
 
           <main className="w-2/3 px-3">
@@ -30,6 +32,7 @@ const ListProducts = ({ data }) => {
                       <div className="mt-4 flex justify-between">
                         <div>
                           <h3 className="text-sm text-gray-700">
+                            {/* нэг хувцасны detail хэсэгрүү URL-ээр id-Г нь дамжуулан шилжинэ. */}
                             <Link href={`/clothes/${clothes._id}`}>
                               <span
                                 aria-hidden="true"
@@ -58,4 +61,4 @@ const ListProducts = ({ data }) => {
   );
 };
 
-export default ListProducts;
+export default ListClothes;
