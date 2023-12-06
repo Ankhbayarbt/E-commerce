@@ -5,23 +5,12 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
 import { toast } from "react-hot-toast";
-//Log in хуудас.
+
+// Log in хуудас.
 const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const router = useRouter();
   const ctx = useContext(UserContext);
-  const loginButtonClick = async (e) => {
-    e.preventDefault();
-    if (username === dummyUsername && password === dummyPassword) {
-      router.push("/");
-      toast.success("Login successful");
-    } else {
-      setUsername("");
-      setPassword("");
-      toast.error("Invalid username or password");
-    }
-  };
 
   return (
     <div className="flex items-center justify-center">

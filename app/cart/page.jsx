@@ -6,9 +6,10 @@ import { getCookie } from "cookies-next";
 import ClothesContext from "@/context/clothes_context";
 import UserContext from "@/context/user_context";
 import { useRouter } from "next/navigation";
-//сагс component. Энд хэрэглэгчийн худалдан авахаар төлөвлөсөн буюу захиалсан хувцсыг харуулах ба нэг болон бүх хувцсыг сагснаас хасах, бүгдийг нь худалдан авах гэсэн үйлдлүүдийг хийж болно.
+
+// Сагс component. Энд хэрэглэгчийн худалдан авахаар төлөвлөсөн буюу захиалсан хувцсыг харуулах ба нэг болон бүх хувцсыг сагснаас хасах, бүгдийг нь худалдан авах гэсэн үйлдлүүдийг хийж болно.
 const CartPage = () => {
-  const [isLooggedIn, setLoggedIn] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(false);
   const clCtx = useContext(ClothesContext);
   const usCtx = useContext(UserContext);
   const router = useRouter();
@@ -29,7 +30,7 @@ const CartPage = () => {
   }, []);
   return (
     <>
-      {isLooggedIn ? (
+      {isLoggedIn ? (
         <div>
           <div>
             {clCtx.cartItems.map((el, i) => (

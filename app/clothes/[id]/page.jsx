@@ -70,7 +70,7 @@ function classNames(...classes) {
 //нэг хувцасны мэдээллийг дэлгэрэнгүй харуулах хуудас ба URL-дээр хувцасны id-г дамжуулан өгч үүнийг ашиглан useeffect дээр id-аар тухайн хувцасны мэдээллийг харуулж байна.
 const ProductDetailsPage = () => {
   const [inCart, setInCart] = useState(false);
-  const [isLooggedIn, setLoggedIn] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(false);
   const params = useParams();
   const usCtx = useContext(UserContext);
   const clCtx = useContext(ClothesContext);
@@ -175,12 +175,12 @@ const ProductDetailsPage = () => {
                   type="button"
                   className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                 >
-                  Add to bag
+                  Сагс руу нэмэх
                 </button>
               ) : (
                 <div className="text-green-500 text-3xl">
                   Уучлаарай энэ хувцас сагслагдсан байгаа учраас худалдан авах
-                  боломжгүй..
+                  боломжгүй...
                 </div>
               )}
             </form>

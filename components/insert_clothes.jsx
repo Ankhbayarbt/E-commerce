@@ -4,7 +4,8 @@ import axios from "axios";
 import React, { useContext, useState } from "react";
 import { getCookie } from "cookies-next";
 import toast from "react-hot-toast";
-//admin page-д шинэ хувцасны мэдээллийг оруулах талбарын component.
+
+// Admin page-д шинэ хувцасны мэдээллийг оруулах талбарын component.
 const AddClothes = ({ onAddProduct }) => {
   const usCtx = useContext(UserContext);
   const convertBase64 = (file) => {
@@ -20,6 +21,7 @@ const AddClothes = ({ onAddProduct }) => {
     });
   };
 
+  // Хувцасны зураг оруулах хэсэг
   const uploadImage = async (event) => {
     const file = event.target.files[0];
     try {

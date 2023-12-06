@@ -3,9 +3,10 @@
 import UserContext from "@/context/user_context";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
-//Contact хуудас.
+
+// Contact хуудас.
 const ContactUsPage = () => {
-  const [isLooggedIn, setLoggedIn] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(false);
   const usCtx = useContext(UserContext);
 
   const router = useRouter();
@@ -27,7 +28,7 @@ const ContactUsPage = () => {
   }, []);
   return (
     <>
-      {isLooggedIn ? (
+      {isLoggedIn ? (
         <div className=" mx-auto w-full my-6 mb-28">
           <div className="flex flex-col md:flex-row md:items-center   p-6">
             <div className="md:w-1/2 lg:w-2/5">

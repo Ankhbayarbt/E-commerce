@@ -6,10 +6,11 @@ import UserContext from "@/context/user_context";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
-//дэлгүүр хуудас.
+
+// Дэлгүүр хуудас.
 const ShopPage = () => {
   const [products, setProducts] = useState([]);
-  const [isLooggedIn, setLoggedIn] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(false);
   const clCtx = useContext(ClothesContext);
   const usCtx = useContext(UserContext);
   const router = useRouter();
@@ -32,7 +33,7 @@ const ShopPage = () => {
       });
   }, []);
 
-  return <>{isLooggedIn ? <ListClothes data={clCtx.clothes} /> : <></>}</>;
+  return <>{isLoggedIn ? <ListClothes data={clCtx.clothes} /> : <></>}</>;
 };
 
 export default ShopPage;

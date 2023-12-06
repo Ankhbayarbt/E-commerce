@@ -4,10 +4,13 @@ import UserContext from "@/context/user_context";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
-//бүдний тухай хуудас.
-const AboutUsPage = () => {
-  const [isLooggedIn, setLoggedIn] = useState(false);
 
+// Бидний тухай хуудас.
+const AboutUsPage = () => {
+  // Нэвтэрсэн эсэх төлөв
+  const [isLoggedIn, setLoggedIn] = useState(false);
+
+  // UserContext-оос нэвтэрсэн эсэхийг шалгах
   const usCtx = useContext(UserContext);
   const router = useRouter();
   useEffect(() => {
@@ -26,7 +29,7 @@ const AboutUsPage = () => {
   }, []);
   return (
     <>
-      {isLooggedIn ? (
+      {isLoggedIn ? (
         <div className="bg-[#D9D9D9] min-h-screen my-16">
           <div className="container mx-auto p-8">
             <h1 className="text-4xl font-bold mb-8 text-center">

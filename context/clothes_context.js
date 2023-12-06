@@ -8,7 +8,7 @@ export function ClothesWrapper({ children }) {
   const [clothes, setClothes] = useState([]);
   const [cartItems, setCartItems] = useState([]);
   const [newClothes, setNewClothes] = useState([]);
-  //сагсанд байгаа хувцаснуудын data-г db-ээс татан авчрах function.
+  // Сагсанд байгаа хувцаснуудын data-г db-ээс татан авчрах function.
   const loadCartItems = async () => {
     const token = getCookie("token");
     axios
@@ -22,7 +22,8 @@ export function ClothesWrapper({ children }) {
         console.log(err);
       });
   };
-  //сагсанд байгаа хувцаснуудыг бүгдийг нь db-ээс устгах function.
+
+  // Сагсанд байгаа хувцаснуудыг бүгдийг нь db-ээс устгах function.
   const removeAllFromCart = async () => {
     const token = getCookie("token");
 
@@ -39,7 +40,8 @@ export function ClothesWrapper({ children }) {
         console.log(err);
       });
   };
-  //нэг барааг сагснаас хасах function.
+
+  // Нэг барааг сагснаас хасах function.
   const removeFromCart = async (id) => {
     const token = getCookie("token");
     console.log(id);
@@ -58,7 +60,8 @@ export function ClothesWrapper({ children }) {
         console.log(err);
       });
   };
-  //сагсанд хувцас нэмэх function.
+
+  // Сагсанд хувцас нэмэх function.
   const addToCart = async (clothes_id, setInCart) => {
     const token = getCookie("token");
     axios
@@ -78,7 +81,8 @@ export function ClothesWrapper({ children }) {
         console.log(err);
       });
   };
-  //бүх хувцасны data-г db-ээс татан авчрах function.
+
+  // Бүх хувцасны data-г db-ээс татан авчрах function.
   const loadClothes = async () => {
     const token = getCookie("token");
     try {
@@ -90,7 +94,8 @@ export function ClothesWrapper({ children }) {
       console.log(err);
     }
   };
-  //шинээр нэмэгдсэн хувцасны data-г db-ээс татан авчрах function.
+
+  // Шинээр нэмэгдсэн хувцасны data-г db-ээс татан авчрах function.
   const loadNewItems = async () => {
     const token = getCookie("token");
     try {

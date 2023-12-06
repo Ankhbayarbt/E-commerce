@@ -12,6 +12,7 @@ const RegisterPage = () => {
   const [password, setPassword] = useState("");
   const router = useRouter();
   const usCtx = useContext(UserContext);
+
   const signUpButtonClick = async (e) => {
     if (fName != "" && lName != "" && email != "" && password != "") {
       try {

@@ -10,7 +10,8 @@ import { ServiceData } from "./constants";
 import { useContext } from "react";
 import ClothesContext from "@/context/clothes_context";
 import Link from "next/link";
-//home page-ийн шинээр нэмэгдсэн хувцсыг харуулдаг slider-ийн component.
+
+// Home page-ийн шинээр нэмэгдсэн хувцсыг харуулдаг slider-ийн component.
 const ActiveSlider = () => {
   const clCtx = useContext(ClothesContext);
   return (

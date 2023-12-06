@@ -1,7 +1,8 @@
 import ClothesContext from "@/context/clothes_context";
 import moment from "moment";
 import React, { useContext } from "react";
-//admin page-дээр байгаа clothes-ийг хянах table-ийн component.
+
+// Admin page-дээр байгаа clothes-ийг хянах table-ийн component.
 const ProductListTable = () => {
   const clCtx = useContext(ClothesContext);
   return (
