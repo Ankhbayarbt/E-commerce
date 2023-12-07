@@ -43,8 +43,14 @@ export function ClothesWrapper({ children }) {
 
   // Нэг барааг сагснаас хасах function.
   const removeFromCart = async (id) => {
+    let array = cartItems;
+    let index = array.findIndex((el) => el._id === id);
+    if (index !== -1) {
+      array.splice(index, 1);
+    }
+    setCartItems([...array]);
     const token = getCookie("token");
-    console.log(id);
+
     axios
       .post(
         "http://localhost:3001/api/cart/remove",
@@ -81,7 +87,21 @@ export function ClothesWrapper({ children }) {
         console.log(err);
       });
   };
-
+  const filterClothes = async (price_from, price_to, by_string) => {
+    const token = getCookie("token");
+    try {
+      const clothes = await axios.get(
+        `http://localhost:3001/api/clothes/filter?by_string=${by_string}&price_from=${price_from}&price_to=${price_to}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      setClothes(clothes.data.data);
+      console.log(clothes);
+    } catch (err) {
+      console.log(err);
+    }
+  };
   // Бүх хувцасны data-г db-ээс татан авчрах function.
   const loadClothes = async () => {
     const token = getCookie("token");
@@ -89,7 +109,7 @@ export function ClothesWrapper({ children }) {
       const clothes = await axios.get("http://localhost:3001/api/clothes", {
         headers: { Authorization: `Bearer ${token}` },
       });
-      setClothes(clothes.data.data);
+      setClothes(clothes.data.data.reverse());
     } catch (err) {
       console.log(err);
     }
@@ -105,7 +125,7 @@ export function ClothesWrapper({ children }) {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      console.log(clothes.data.data);
+
       setNewClothes(clothes.data.data);
     } catch (err) {
       console.log(err);
@@ -124,6 +144,7 @@ export function ClothesWrapper({ children }) {
         removeAllFromCart,
         newClothes,
         loadNewItems,
+        filterClothes,
       }}
     >
       {children}
