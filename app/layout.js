@@ -4,8 +4,12 @@ import Header from "@/components/layouts/Header";
 import "@material/web/button/filled-button.js";
 import "@material/web/button/outlined-button.js";
 import "@material/web/checkbox/checkbox.js";
-import BreadCumbs from "@/components/layouts/BreadCumbs";
+import { Toaster } from "react-hot-toast";
+import { ClothesWrapper } from "@/context/clothes_context";
+import { UserWrapper } from "@/context/user_context";
 
+import CustomFooter from "@/components/general/footer";
+import { Suspense } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -17,11 +21,17 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       {" "}
-      <body>
+      <body className="bg-[#D9D9D9] pb-10 ">
         {" "}
-        <Header />
-        <BreadCumbs />
-        <div className="mx-10">{children}</div>
+        <UserWrapper>
+          <ClothesWrapper>
+            <Header />
+            <Toaster position="bottom-right" />
+            <Suspense fallback={<p>Loading feed...</p>}>
+              <div className="mx-10">{children}</div>
+            </Suspense>
+          </ClothesWrapper>
+        </UserWrapper>
       </body>
     </html>
   );

@@ -6,7 +6,7 @@ const BreadCumbs = ({ breadCumbs }) => {
     <section className="py-5 sm:py-7 bg-blue-100">
       <div className="container max-w-screen-xl mx-auto px-4">
         <ol className="inline-flex flex-wrap text-gray-600 space-x-1 md:space-x-3 items-center">
-          {breadCumbs?.map((breadCumb, index) => (
+          {breadCumbs?.map?.((breadCumb, index) => (
             <li className="inline-flex items-center">
               <Link
                 href={`${breadCumb.url}`}

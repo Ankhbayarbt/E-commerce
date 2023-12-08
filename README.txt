@@ -1,0 +1,1 @@
+та энэхүү project-ийг ажиллуулахын тулд "npm i" command-ийг ашиглан энэ project-д ашигласан сангуудыг суулгана. дараа нь "npm build" command-аар production хувилбарыг generate хийж npm start command-аар ажиллуулна.
