@@ -35,6 +35,10 @@ export function ClothesWrapper({ children }) {
       )
       .then((res) => {
         console.log(res);
+
+        let array = [];
+        array.length = 0;
+        setCartItems([...array]);
       })
       .catch((err) => {
         console.log(err);
@@ -97,7 +101,7 @@ export function ClothesWrapper({ children }) {
         }
       );
       setClothes(clothes.data.data);
-      console.log(clothes);
+      Б;
     } catch (err) {
       console.log(err);
     }
