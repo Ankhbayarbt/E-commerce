@@ -35,6 +35,9 @@ export function ClothesWrapper({ children }) {
       )
       .then((res) => {
         console.log(res);
+
+        let array = [];
+        setCartItems([...array]);
       })
       .catch((err) => {
         console.log(err);
